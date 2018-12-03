@@ -1,0 +1,29 @@
+"Code example(React Js): 
+import fetch from 'isomorphic-fetch';
+import queryString from 'qs';
+import { isNil } from 'lodash';
+/**
+ * TODO: Take it out somewhen from here
+ */
+const API_URL = 'https://api-ingrad.kbvesna.ru/api';
+
+// Fetch projects list data
+export function fetchProjectsList(params) {
+  let queryParams = '';
+  if (!isNil(params)) {
+    queryParams = `?${queryString.stringify(params)}`;
+  }
+
+  return fetch(`${API_URL}/projects${queryParams}`);
+}
+
+// Fetch slider page
+export function fetchSliderPage() {
+  return fetch(`${API_URL}/pages/bypath/index`);
+}
+
+// Fetch slider images
+export function fetchSliderImages(id) {
+  return fetch(`${API_URL}/content_blocks/${id}`);
+}
+"
